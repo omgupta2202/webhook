@@ -25,6 +25,8 @@ nano ~/.zshrc
 export PATH="/usr/local/opt/mongodb-community/bin:$PATH"
 source ~/.zshrc
 
+Or jsut start you mongodb server by: mongosh
+
 Test the Webhook:
 http POST http://127.0.0.1:8000/webhooks/ company_id=test url=http://test.com/events headers:='{}' events:='["event1", "event2"]'
 
@@ -41,7 +43,7 @@ Body:
 {
   "company_id": "your_company_id",
   "url": "http://example.com/events",
-  "headers": {"Authorization": "Bearer token"},
+  "headers": {},
   "events": ["event1", "event2"]
 }
 
@@ -53,7 +55,7 @@ Body:
 {
   "company_id": "your_company_id",
   "url": "http://updated-url.com/events",
-  "headers": {"Authorization": "Bearer updated-token"},
+  "headers": {},
   "events": ["updated-event"]
 }
 
