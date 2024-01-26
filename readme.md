@@ -69,7 +69,7 @@ Body:
 
 2. Update Your Own Webhook Subscription:
 Method: PATCH
-URL: http://127.0.0.1:8000/webhooks/{webhook_id}/ (Replace {webhook_id} with the actual ID)
+URL: http://127.0.0.1:8000/webhooks/{webhook_id}/ (Replace webhook_id with the actual ID)
 Headers: Content-Type: application/json
 Body:
 {
@@ -81,7 +81,7 @@ Body:
 
 3. Delete Your Own Webhook Subscription:
 Method: DELETE
-URL: http://127.0.0.1:8000/webhooks/{webhook_id}/ (Replace {webhook_id} with the actual ID)
+URL: http://127.0.0.1:8000/webhooks/{webhook_id}/ (Replace webhook_id with the actual ID)
 
 4. Get Your Own Webhook(s) Subscription:
 Method: GET
@@ -90,7 +90,7 @@ Query Params: company_id=your_company_id
 This will retrieve a list of all webhook subscriptions associated with the specified company ID.
 
 Method: GET
-URL: http://127.0.0.1:8000/webhooks/{webhook_id}/ (Replace {webhook_id} with the actual ID)
+URL: http://127.0.0.1:8000/webhooks/{webhook_id}/ (Replace webhook_id with the actual ID)
 This will retrieve details about a specific webhook subscription.
 
 Harcoded company name= "test"
