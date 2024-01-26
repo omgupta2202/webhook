@@ -1,31 +1,39 @@
-Steps to install dependencies and get started-
+# FastAPI Webhooks
+
+This project provides a FastAPI-based implementation for managing webhooks, powered by MongoDB for data storage and Celery for asynchronous task processing.
+
+## Getting Started
+
+### Install Dependencies
+
 
 pip install 'fastapi[all]' 'motor[asyncio]' celery requests
 pip install redis
 brew services start redis
+
 uvicorn main:app --reload
 celery -A main.celery worker --loglevel=info
 
-Setup monngodb server:
-   brew tap mongodb/brew
-1. brew install mongodb-community
-2. tar xzvf mongodb-macos*.tgz
-3. cd mongodb-macos*
-4. sudo cp bin/* /usr/local/bin
-5. sudo mkdir -p /usr/local/var/mongodb
-6. sudo mkdir -p /usr/local/var/log/mongodb
-7. sudo chown $USER /usr/local/var/mongodb
-8. sudo chown $USER /usr/local/var/log/mongodb
-9. mongod --dbpath /usr/local/var/mongodb --logpath /usr/local/var/log/mongodb/mongo.log --fork
-10. mongosh
-11. connect mongo atlas compass
+# Install MongoDB using Homebrew
+brew tap mongodb/brew
+brew install mongodb-community
+tar xzvf mongodb-macos*.tgz
+cd mongodb-macos*
+sudo cp bin/* /usr/local/bin
+sudo mkdir -p /usr/local/var/mongodb
+sudo mkdir -p /usr/local/var/log/mongodb
+sudo chown $USER /usr/local/var/mongodb
+sudo chown $USER /usr/local/var/log/mongodb
+mongod --dbpath /usr/local/var/mongodb --logpath /usr/local/var/log/mongodb/mongo.log --fork
+mongosh
 
-Additional Steps(if mongo server don't connect):
+If you face connection issues, add MongoDB to your PATH:
 nano ~/.zshrc
 export PATH="/usr/local/opt/mongodb-community/bin:$PATH"
 source ~/.zshrc
 
-Or jsut start you mongodb server by: mongosh
+Or start MongoDB using:
+mongosh
 
 Test the Webhook:
 http POST http://127.0.0.1:8000/webhooks/ company_id=test url=http://test.com/events headers:='{}' events:='["event1", "event2"]'
@@ -33,7 +41,7 @@ http POST http://127.0.0.1:8000/webhooks/ company_id=test url=http://test.com/ev
 Fire an Event:
 http POST http://127.0.0.1:8000/fire-event/ '{"event_data": "your_event_data"}'
 
-Using Postman-
+Test using Postman-
 
 1. Create a Webhook Subscription:
 Method: POST
@@ -81,3 +89,8 @@ Body:
 {
   "event_data": "your_event_data"
 }
+
+Contributing:
+Feel free to contribute by opening issues or submitting pull requests.
+
+![Alt Text](assignment.jpeg)
