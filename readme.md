@@ -6,25 +6,37 @@ This project provides a FastAPI-based implementation for managing webhooks, powe
 
 ### Install Dependencies
 
-
 pip install 'fastapi[all]' 'motor[asyncio]' celery requests
+
 pip install redis
+
 brew services start redis
 
 uvicorn main:app --reload
+
 celery -A main.celery worker --loglevel=info
 
 # Install MongoDB using Homebrew
 brew tap mongodb/brew
+
 brew install mongodb-community
+
 tar xzvf mongodb-macos*.tgz
+
 cd mongodb-macos*
+
 sudo cp bin/* /usr/local/bin
+
 sudo mkdir -p /usr/local/var/mongodb
+
 sudo mkdir -p /usr/local/var/log/mongodb
+
 sudo chown $USER /usr/local/var/mongodb
+
 sudo chown $USER /usr/local/var/log/mongodb
+
 mongod --dbpath /usr/local/var/mongodb --logpath /usr/local/var/log/mongodb/mongo.log --fork
+
 mongosh
 
 If you face connection issues, add MongoDB to your PATH:
